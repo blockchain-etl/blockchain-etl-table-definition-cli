@@ -1,4 +1,4 @@
-# ethereum-etl-table-definition-cli
+# Ethereum ETL Table Definition CLI
 
 Ethereum ETL Table Definition CLI allows you to generate table definitions for Ethereum ETL. 
 
@@ -12,7 +12,7 @@ Install the cli:
 pip install tabledefinition
 ```
 
-Generate table definitions (`example_uniswap_abi.json` can be downloaded from [here]()):
+Generate table definitions (`example_uniswap_abi.json` can be downloaded from [here](https://github.com/blockchain-etl/ethereum-etl-table-definition-cli/blob/main/example_uniswap_abi.json)):
 
 ```bash
 tabledefinition generate \
