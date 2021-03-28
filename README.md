@@ -27,6 +27,8 @@ Output will be in the `output` directory.
 ---
 
 For the latest version, check out the repo and call 
+
 ```bash
-pip install -e . 
+pip install -e .
+python tabledefinition.py --help 
 ```
