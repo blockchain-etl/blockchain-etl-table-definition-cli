@@ -12,6 +12,8 @@ def abi_to_table_definitions(
         contract_address=None,
 ):
     result = {}
+    if contract_address is not None:
+        contract_address = contract_address.lower()
     for a in filter_by_type(abi, 'event'):
         table_name = create_table_name(a, contract_name)
         result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'log')

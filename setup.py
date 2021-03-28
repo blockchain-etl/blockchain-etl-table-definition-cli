@@ -11,13 +11,13 @@ long_description = read('README.md') if os.path.isfile("README.md") else ""
 
 setup(
     name='ethereum-etl-table-definition-cli',
-    version='1.0.0',
+    version='1.0.1',
     author='Evgeny Medvedev',
     author_email='evge.medvedev@gmail.com',
     description='Tools for generating table definitions for https://github.com/blockchain-etl/ethereum-etl-airflow',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/blockchain-etl/ethereum-contract-parser-cli',
+    url='https://github.com/blockchain-etl/ethereum-etl-table-definition-cli',
     packages=find_packages(exclude=['schemas', 'tests']),
     classifiers=[
         'Development Status :: 5 - Production/Stable',

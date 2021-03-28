@@ -24,6 +24,6 @@ Then run:
 ```bash
 > python setup.py sdist
 > twine upload dist/* -r testpypi
-> pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ethereum-etl 
+> pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ethereum-etl-table-definition-cli 
 ```
 
