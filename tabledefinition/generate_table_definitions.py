@@ -1,27 +1,28 @@
-from collections import defaultdict
-
 SOLIDITY_TO_BQ_TYPES = {
     'address': 'STRING',
 }
 
-dataset_name = '<INSERT_DATASET_NAME>'
-table_prefix = '<TABLE_PREFIX>'
 table_description = ''
 
 
-def contract_to_table_definitions(abi, contract_address):
+def abi_to_table_definitions(
+        abi,
+        dataset_name,
+        contract_name,
+        contract_address=None,
+):
     result = {}
     for a in filter_by_type(abi, 'event'):
-        abi_item_key = get_abi_item_key(abi, a)
-        result[abi_item_key] = abi_to_table_definition(a, contract_address, 'log')
+        table_name = create_table_name(a, contract_name)
+        result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'log')
     for a in filter_by_type(abi, 'function'):
-        abi_item_key = get_abi_item_key(abi, a)
-        result[abi_item_key] = abi_to_table_definition(a, contract_address, 'trace')
+        table_name = create_table_name(a, contract_name)
+        result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'trace')
     return result
 
 
-def abi_to_table_definition(abi, contract_address, parser_type):
-    table_name = create_table_name(abi)
+def abi_to_table_definition(abi, contract_address, dataset_name, contract_name, parser_type):
+    table_name = create_table_name(abi, contract_name)
     result = {}
     result['parser'] = {
         'type': parser_type,
@@ -44,11 +45,11 @@ def abi_to_table_definition(abi, contract_address, parser_type):
     return result
 
 
-def create_table_name(abi):
+def create_table_name(abi, contract_name):
     if abi.get('type') == 'event':
-        return table_prefix + '_event_' + abi['name']
+        return contract_name + '_event_' + abi['name']
     else:
-        return table_prefix + '_call_' + abi['name']
+        return contract_name + '_call_' + abi['name']
 
 
 def s2bq_type(type):
@@ -67,19 +68,3 @@ def get_columns_from_event_abi(event_abi):
 
 def create_struct_fields_from_event_abi(event_abi):
     return ', '.join(['`' + a.get('name') + '` ' + s2bq_type(a.get('type')) for a in event_abi['inputs']])
-
-
-def get_abi_item_key(abi, abi_item):
-    name_counts = defaultdict(int)
-    for a in abi:
-        if 'name' in a:
-            name_counts[a['name']] += 1
-
-    is_ambiguous = name_counts[abi_item['name']] > 1
-
-    key = abi_item['name']
-    if is_ambiguous:
-        input_types = [i['type'] for i in abi_item.get('inputs', [])]
-        if input_types:
-            key = abi_item['name'] + '_' + '_'.join(input_types)
-    return key

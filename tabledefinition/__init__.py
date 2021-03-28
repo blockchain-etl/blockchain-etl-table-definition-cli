@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Evgeny Medvedev, evge.medvedev@gmail.com
+# Copyright (c) 2021 Evgeny Medvedev, evge.medvedev@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,16 +21,3 @@
 # SOFTWARE.
 
 
-import click
-
-
-from tabledefinition.generate_table_definitions import contract_to_table_definitions
-
-logging_basic_config()
-
-
-@click.command(context_settings=dict(help_option_names=['-h', '--help']))
-@click.option('-a', '--abi', default=0, show_default=True, type=int, help='Path to ABI file')
-def export_blocks_and_transactions(abi_file):
-    """Generate table definitions for the provided ABI file."""
-    contract_to_table_definitions()

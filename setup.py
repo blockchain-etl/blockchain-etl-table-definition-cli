@@ -30,19 +30,18 @@ setup(
         'Programming Language :: Python :: 3.8'
     ],
     keywords='ethereum',
-    # web3.py doesn't work on 3.5.2 and less (https://github.com/ethereum/web3.py/issues/1012)
     python_requires='>=3.5.3,<4',
     install_requires=[
         'click==7.0'
     ],
     entry_points={
         'console_scripts': [
-            'ethereumetl=ethereumetl.cli:cli',
+            'tabledefinition=tabledefinition.cli:cli',
         ],
     },
     project_urls={
-        'Bug Reports': 'https://github.com/blockchain-etl/ethereum-etl/issues',
+        'Bug Reports': 'https://github.com/blockchain-etl/ethereum-etl-table-definition-cli/issues',
         'Chat': 'https://gitter.im/ethereum-etl/Lobby',
-        'Source': 'https://github.com/blockchain-etl/ethereum-etl',
+        'Source': 'https://github.com/blockchain-etl/ethereum-etl-table-definition-cli',
     },
 )
