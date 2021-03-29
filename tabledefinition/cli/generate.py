@@ -53,3 +53,5 @@ def generate(abi_file, dataset_name, contract_name, contract_address, output_dir
             output_filename = os.path.join(output_dir, key + '.json')
             with open(output_filename, 'w') as output_file_handle:
                 output_file_handle.write(json.dumps(value, indent=4))
+
+        print(str(len(table_definition_map)) + ' table definitions have been written to the ' + output_dir + ' directory')

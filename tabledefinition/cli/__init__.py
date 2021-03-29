@@ -26,7 +26,7 @@ from tabledefinition.cli.generate import generate
 
 
 @click.group()
-@click.version_option(version='1.0.1')
+@click.version_option(version='1.0.2')
 @click.pass_context
 def cli(ctx):
     pass
