@@ -10,14 +10,14 @@ def read(fname):
 long_description = read('README.md') if os.path.isfile("README.md") else ""
 
 setup(
-    name='ethereum-etl-table-definition-cli',
+    name='evmchain-etl-table-definition-cli',
     version='1.1.0',
     author='Evgeny Medvedev',
     author_email='evge.medvedev@gmail.com',
     description='Tools for generating table definitions for https://github.com/blockchain-etl/ethereum-etl-airflow',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/blockchain-etl/ethereum-etl-table-definition-cli',
+    url='https://github.com/blockchain-etl/evmchain-etl-table-definition-cli',
     packages=find_packages(exclude=['schemas', 'tests']),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -29,7 +29,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8'
     ],
-    keywords='ethereum',
+    keywords='ethereum,polygon,bsc,arbitrum,fantom,celo,ronin,avalanche',
     python_requires='>=3.5.3,<4',
     install_requires=[
         'click==7.0'
@@ -40,8 +40,8 @@ setup(
         ],
     },
     project_urls={
-        'Bug Reports': 'https://github.com/blockchain-etl/ethereum-etl-table-definition-cli/issues',
+        'Bug Reports': 'https://github.com/blockchain-etl/evmchain-etl-table-definition-cli/issues',
         'Chat': 'https://gitter.im/ethereum-etl/Lobby',
-        'Source': 'https://github.com/blockchain-etl/ethereum-etl-table-definition-cli',
+        'Source': 'https://github.com/blockchain-etl/evmchain-etl-table-definition-cli',
     },
 )

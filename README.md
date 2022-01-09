@@ -16,7 +16,7 @@ Read this article for more details: [How to get any Ethereum smart contract into
 Install the cli:
 
 ```bash
-pip install ethereum-etl-table-definition-cli
+pip install evmchain-etl-table-definition-cli
 ```
 
 Generate table definitions (`example_uniswap_abi.json` can be downloaded from [here](https://github.com/blockchain-etl/ethereum-etl-table-definition-cli/blob/main/example_uniswap_abi.json)):
