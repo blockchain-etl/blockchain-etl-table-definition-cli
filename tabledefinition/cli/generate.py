@@ -35,7 +35,8 @@ from tabledefinition.generate_table_definitions import abi_to_table_definitions
 @click.option('-n', '--contract-name', default='<CONTRACT_NAME>', show_default=True, type=str, help='Contract name')
 @click.option('-a', '--contract-address', show_default=True, type=str, help='Contract address')
 @click.option('-o', '--output-dir', default='output', type=str, help='The output directory for table definitions.')
-def generate(abi_file, dataset_name, contract_name, contract_address, output_dir):
+@click.option('--include-functions/--no-include-functions', default=False, help='Whether to include table definitions for functions.')
+def generate(abi_file, dataset_name, contract_name, contract_address, output_dir, include_functions):
     """Generate table definitions for the provided ABI file."""
 
     with open(abi_file, 'r') as abi_file_handle:
@@ -45,7 +46,8 @@ def generate(abi_file, dataset_name, contract_name, contract_address, output_dir
             abi,
             dataset_name,
             contract_name,
-            contract_address
+            contract_address,
+            include_functions
         )
 
         pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)

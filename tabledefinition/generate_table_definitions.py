@@ -10,6 +10,7 @@ def abi_to_table_definitions(
         dataset_name,
         contract_name,
         contract_address=None,
+        include_functions=False
 ):
     result = {}
     if contract_address is not None:
@@ -17,9 +18,10 @@ def abi_to_table_definitions(
     for a in filter_by_type(abi, 'event'):
         table_name = create_table_name(a, contract_name)
         result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'log')
-    for a in filter_by_type(abi, 'function'):
-        table_name = create_table_name(a, contract_name)
-        result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'trace')
+    if include_functions:
+        for a in filter_by_type(abi, 'function'):
+            table_name = create_table_name(a, contract_name)
+            result[table_name] = abi_to_table_definition(a, contract_address, dataset_name, contract_name, 'trace')
     return result
 
 

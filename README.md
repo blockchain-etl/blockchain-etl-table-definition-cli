@@ -7,6 +7,10 @@ EVM Chain ETL Table Definition CLI allows generating table definitions for
 
 Read this article for more details: [How to get any Ethereum smart contract into BigQuery (in 8 mins)](https://towardsdatascience.com/how-to-get-any-ethereum-smart-contract-into-bigquery-in-8-mins-bab5db1fdeee).
 
+## Requirements:
+
+- Python 3.6+
+
 ## Quickstart
 
 Install the cli:
