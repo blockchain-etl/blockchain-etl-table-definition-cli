@@ -42,6 +42,8 @@ def generate(abi_file, dataset_name, contract_name, contract_address, output_dir
     with open(abi_file, 'r') as abi_file_handle:
         abi = abi_file_handle.read()
         abi = json.loads(abi)
+        if not isinstance(abi, list):
+            raise ValueError('This doesn\'t look like a valid ABI. The valid ABI should be an array')
         table_definition_map = abi_to_table_definitions(
             abi,
             dataset_name,
