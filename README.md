@@ -29,6 +29,18 @@ tabledefinition generate \
     --contract-address 0x1f9840a85d5af5bf1d1762f925bdaddc4201f984
 ```
 
+For Solana:
+
+```bash
+tabledefinition generate \
+    --chain solana \
+    --abi-file example_metaplex_idl.json \
+    --dataset-name metaplex \
+    --contract-name AuctionHouse \
+    --contract-address hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk
+    --include-functions
+```
+
 Output will be in the `output` directory.
 
 ---
