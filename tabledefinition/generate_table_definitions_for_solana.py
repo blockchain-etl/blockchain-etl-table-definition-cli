@@ -36,17 +36,31 @@ def abi_to_table_definition(abi, contract_address, dataset_name, contract_name, 
     }
 
     inputs = abi.get('args') if parser_type == 'instruction' else abi.get('fields')
-    result['table'] = {
-        'dataset_name': dataset_name,
-        'table_name': table_name,
-        'table_description': table_description,
-        'schema': [
+    schema = [
             {
                 'name': x.get('name'),
                 'description': '',
                 'type': 'STRING'  # we sometimes get parsing errors, so safest to make all STRING
             } for x in inputs
         ]
+    if parser_type == 'instruction' and abi.get('accounts'):
+        schema.append({
+                'name': 'accounts',
+                'description': 'accounts',
+                'type': 'RECORD',
+                'fields': [
+                    {
+                        'name': acc.get('name'),
+                        'description': '',
+                        'type': 'STRING'
+                    } for acc in abi.get('accounts')
+                ]
+        })
+    result['table'] = {
+        'dataset_name': dataset_name,
+        'table_name': table_name,
+        'table_description': table_description,
+        'schema': schema
     }
     return result
 
