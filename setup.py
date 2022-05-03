@@ -11,7 +11,7 @@ long_description = read('README.md') if os.path.isfile("README.md") else ""
 
 setup(
     name='blockchain-etl-table-definition-cli',
-    version='1.2.0',
+    version='1.3.0',
     author='Evgeny Medvedev',
     author_email='evge.medvedev@gmail.com',
     description='Tools for generating table definitions for https://github.com/blockchain-etl/ethereum-etl-airflow',
