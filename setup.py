@@ -10,14 +10,14 @@ def read(fname):
 long_description = read('README.md') if os.path.isfile("README.md") else ""
 
 setup(
-    name='evmchain-etl-table-definition-cli',
+    name='blockchain-etl-table-definition-cli',
     version='1.2.0',
     author='Evgeny Medvedev',
     author_email='evge.medvedev@gmail.com',
     description='Tools for generating table definitions for https://github.com/blockchain-etl/ethereum-etl-airflow',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/blockchain-etl/evmchain-etl-table-definition-cli',
+    url='https://github.com/blockchain-etl/blockchain-etl-table-definition-cli',
     packages=find_packages(exclude=['schemas', 'tests']),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -40,8 +40,8 @@ setup(
         ],
     },
     project_urls={
-        'Bug Reports': 'https://github.com/blockchain-etl/evmchain-etl-table-definition-cli/issues',
+        'Bug Reports': 'https://github.com/blockchain-etl/blockchain-etl-table-definition-cli/issues',
         'Chat': 'https://gitter.im/ethereum-etl/Lobby',
-        'Source': 'https://github.com/blockchain-etl/evmchain-etl-table-definition-cli',
+        'Source': 'https://github.com/blockchain-etl/blockchain-etl-table-definition-cli',
     },
 )

@@ -1,9 +1,10 @@
-# EVM Chain ETL Table Definition CLI
+# Blockchain ETL Table Definition CLI
 
-EVM Chain ETL Table Definition CLI allows generating table definitions for 
+Blockchain ETL Table Definition CLI allows generating table definitions for 
 [Ethereum ETL](https://github.com/blockchain-etl/ethereum-etl-airflow/tree/master/dags/resources/stages/parse/table_definitions),
 [Polygon ETL](https://github.com/blockchain-etl/polygon-etl/tree/main/airflow/dags/resources/stages/parse/table_definitions),
-[EVM Chain ETL](https://github.com/nansen-ai/evmchain-etl-table-definitions/tree/main/parse).
+[EVM Chain ETL](https://github.com/nansen-ai/evmchain-etl-table-definitions/tree/main/parse),
+[Solana ETL](https://github.com/nansen-ai/solana-etl-table-definitions/tree/main/parse).
 
 Read this article for more details: [How to get any Ethereum smart contract into BigQuery (in 8 mins)](https://towardsdatascience.com/how-to-get-any-ethereum-smart-contract-into-bigquery-in-8-mins-bab5db1fdeee).
 
@@ -16,7 +17,7 @@ Read this article for more details: [How to get any Ethereum smart contract into
 Install the cli:
 
 ```bash
-pip install evmchain-etl-table-definition-cli
+pip install blockchain-etl-table-definition-cli
 ```
 
 Generate table definitions (`example_uniswap_abi.json` can be downloaded from [here](https://github.com/blockchain-etl/ethereum-etl-table-definition-cli/blob/main/example_uniswap_abi.json)):
