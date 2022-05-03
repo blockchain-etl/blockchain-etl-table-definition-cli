@@ -25,8 +25,8 @@ import pathlib
 
 import click
 
-
-from tabledefinition.generate_table_definitions import abi_to_table_definitions
+from tabledefinition.generate_table_definitions_for_evmchain import abi_to_table_definitions_for_evmchain
+from tabledefinition.generate_table_definitions_for_solana import abi_to_table_definitions_for_solana
 
 
 @click.command(context_settings=dict(help_option_names=['-h', '--help']))
@@ -34,21 +34,37 @@ from tabledefinition.generate_table_definitions import abi_to_table_definitions
 @click.option('-d', '--dataset-name', default='<DATASET_NAME>', show_default=True, type=str, help='Dataset name')
 @click.option('-n', '--contract-name', default='<CONTRACT_NAME>', show_default=True, type=str, help='Contract name')
 @click.option('-a', '--contract-address', show_default=True, type=str, help='Contract address')
+@click.option('-c', '--chain', default='evm', show_default=True, type=str, help='Contract address')
 @click.option('-o', '--output-dir', default='output', type=str, help='The output directory for table definitions.')
 @click.option('--include-functions/--no-include-functions', default=False, help='Whether to include table definitions for functions.')
-def generate(abi_file, dataset_name, contract_name, contract_address, output_dir, include_functions):
+def generate(abi_file, dataset_name, contract_name, chain, contract_address, output_dir, include_functions):
     """Generate table definitions for the provided ABI file."""
 
     with open(abi_file, 'r') as abi_file_handle:
         abi = abi_file_handle.read()
         abi = json.loads(abi)
-        table_definition_map = abi_to_table_definitions(
-            abi,
-            dataset_name,
-            contract_name,
-            contract_address,
-            include_functions
-        )
+        if chain == 'evm' and not isinstance(abi, list):
+            raise ValueError('This doesn\'t look like a valid ABI. The valid ABI should be an array')
+
+        if chain == 'solana' and not isinstance(abi, dict):
+            raise ValueError('This doesn\'t look like a valid IDL. The valid IDL should be an object')
+
+        if chain == 'evm':
+            table_definition_map = abi_to_table_definitions_for_evmchain(
+                abi,
+                dataset_name,
+                contract_name,
+                contract_address,
+                include_functions
+            )
+        elif chain == 'solana':
+            table_definition_map = abi_to_table_definitions_for_solana(
+                abi,
+                dataset_name,
+                contract_name,
+                contract_address,
+                include_functions
+            )
 
         pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
         for key, value in table_definition_map.items():
