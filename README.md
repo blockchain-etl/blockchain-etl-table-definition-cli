@@ -38,7 +38,7 @@ tabledefinition generate \
     --abi-file example_metaplex_idl.json \
     --dataset-name metaplex \
     --contract-name AuctionHouse \
-    --contract-address hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk
+    --contract-address hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk \
     --include-functions
 ```
 
